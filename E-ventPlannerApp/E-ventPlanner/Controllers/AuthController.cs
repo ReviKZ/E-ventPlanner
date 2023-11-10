@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using E_ventPlanner.Models.DTOs;
+using E_ventPlanner.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_ventPlanner.Controllers
@@ -7,11 +9,18 @@ namespace E_ventPlanner.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly IRegisterService _registerService;
+
+        public AuthController(IRegisterService registerService)
+        {
+            _registerService = registerService;
+        }
+
         [HttpPost]
         [Route("register")]
-        public async Task<bool> Register()
+        public async Task<bool> Register(RegisterDTO user)
         {
-            throw new NotImplementedException();
+            return await _registerService.RegisterUser(user);
         }
     }
 }
