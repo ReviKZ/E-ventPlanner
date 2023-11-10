@@ -22,8 +22,10 @@
 
   <ItemGroup>
     <Folder Include="Contexts\" />
-    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Enums\" />
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="UMLs\" />
   </ItemGroup>
 
 </Project>

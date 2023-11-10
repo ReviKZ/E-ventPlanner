@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace E_ventPlanner.Migrations
 {
     [DbContext(typeof(PlannerDbContext))]
-    [Migration("20231109075429_Initial")]
+    [Migration("20231110083649_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,11 +83,8 @@ namespace E_ventPlanner.Migrations
 
             modelBuilder.Entity("E_ventPlanner.Models.UserData", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
