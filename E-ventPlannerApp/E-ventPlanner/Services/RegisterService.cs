@@ -29,7 +29,7 @@ public class RegisterService : IRegisterService
 
         if (result.Succeeded)
         {
-            var userId = Int32.Parse(_userManager.Users.First(u => u.Email == user.Email).Id);
+            var userId = _userManager.Users.First(u => u.Email == user.Email).Id;
             var userData = new UserData
             {
                 UserId = userId,
