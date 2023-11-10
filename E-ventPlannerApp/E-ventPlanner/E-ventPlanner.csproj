@@ -25,6 +25,7 @@
     <Folder Include="Controllers\" />
     <Folder Include="Enums\" />
     <Folder Include="Models\DTOs\" />
+    <Folder Include="UMLs\" />
   </ItemGroup>
 
 </Project>
