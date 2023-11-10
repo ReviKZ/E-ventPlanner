@@ -29,7 +29,14 @@ public class RegisterService : IRegisterService
 
         if (result.Succeeded)
         {
-            var userId = _userManager.Users.First(u => u.Email == user.Email).Id;
+            var createdUser = await _userManager.FindByEmailAsync(user.Email);
+
+            if (createdUser == null)
+            {
+                return false;
+            }
+
+            var userId = createdUser.Id;
             var userData = new UserData
             {
                 UserId = userId,
