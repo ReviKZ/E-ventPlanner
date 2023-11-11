@@ -27,9 +27,15 @@ namespace E_ventPlanner.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<(bool, string)> Login(LoginDTO user)
+        public async Task<IActionResult> Login(LoginDTO user)
         {
-            return await _loginService.LoginUser(user);
+            if (await _loginService.LoginUser(user))
+            {
+                return Ok("Logged in!");
+            }
+
+            return BadRequest("Something went wrong");
+
         }
     }
 }
