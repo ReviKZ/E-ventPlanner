@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using E_ventPlanner.Contexts;
 using E_ventPlanner.Enums;
 using E_ventPlanner.Models;
@@ -19,6 +20,12 @@ public class RegisterService : IRegisterService
     }
     public async Task<bool> RegisterUser(RegisterDTO user)
     {
+
+        if (!IsValidEmail(user.Email))
+        {
+            return false;
+        }
+
         var identityUser = new IdentityUser
         {
             UserName = user.Email,
@@ -52,5 +59,12 @@ public class RegisterService : IRegisterService
         }
 
         return false;
+    }
+
+    // Helper method to check if the email has a valid format
+    private bool IsValidEmail(string email)
+    {
+        const string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$";
+        return Regex.IsMatch(email, emailPattern);
     }
 }
