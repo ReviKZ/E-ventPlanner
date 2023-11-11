@@ -26,6 +26,7 @@
     <Folder Include="Enums\" />
     <Folder Include="Models\DTOs\" />
     <Folder Include="UMLs\" />
+    <Folder Include="Utils\ServiceUtils\" />
   </ItemGroup>
 
 </Project>

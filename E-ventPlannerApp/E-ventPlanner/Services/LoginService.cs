@@ -5,6 +5,7 @@ using E_ventPlanner.Models.DTOs;
 using Microsoft.AspNetCore.Identity;
 using System.Text.RegularExpressions;
 using E_ventPlanner.Services.Interfaces;
+using E_ventPlanner.Utils.ServiceUtils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_ventPlanner.Services;
@@ -20,7 +21,7 @@ public class LoginService : ILoginService
 
     public async Task<bool> LoginUser(LoginDTO user)
     {
-        if (!IsValidEmail(user.Email))
+        if (!AuthUtil.IsValidEmail(user.Email))
         {
             return false;
         }
@@ -40,12 +41,5 @@ public class LoginService : ILoginService
 
         return true;
 
-    }
-
-    // Helper method to check if the email has a valid format
-    private bool IsValidEmail(string email)
-    {
-        const string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$";
-        return Regex.IsMatch(email, emailPattern);
     }
 }

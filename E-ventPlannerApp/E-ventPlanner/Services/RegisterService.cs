@@ -5,6 +5,7 @@ using E_ventPlanner.Enums;
 using E_ventPlanner.Models;
 using E_ventPlanner.Models.DTOs;
 using E_ventPlanner.Services.Interfaces;
+using E_ventPlanner.Utils.ServiceUtils;
 using Microsoft.AspNetCore.Identity;
 
 namespace E_ventPlanner.Services;
@@ -21,7 +22,7 @@ public class RegisterService : IRegisterService
     public async Task<bool> RegisterUser(RegisterDTO user)
     {
 
-        if (!IsValidEmail(user.Email))
+        if (!AuthUtil.IsValidEmail(user.Email))
         {
             return false;
         }
@@ -59,12 +60,5 @@ public class RegisterService : IRegisterService
         }
 
         return false;
-    }
-
-    // Helper method to check if the email has a valid format
-    private bool IsValidEmail(string email)
-    {
-        const string emailPattern = @"^[^\s@]+@[^\s@]+\.[^\s@]+$";
-        return Regex.IsMatch(email, emailPattern);
     }
 }
