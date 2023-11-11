@@ -22,5 +22,12 @@ namespace E_ventPlanner.Controllers
         {
             return await _registerService.RegisterUser(user);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<bool> Login(LoginDTO user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
