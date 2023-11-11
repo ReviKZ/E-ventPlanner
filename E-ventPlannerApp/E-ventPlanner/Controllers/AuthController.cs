@@ -10,10 +10,12 @@ namespace E_ventPlanner.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IRegisterService _registerService;
+        private readonly ILoginService _loginService;
 
-        public AuthController(IRegisterService registerService)
+        public AuthController(IRegisterService registerService, ILoginService loginService)
         {
             _registerService = registerService;
+            _loginService = loginService;
         }
 
         [HttpPost]
@@ -25,9 +27,9 @@ namespace E_ventPlanner.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<bool> Login(LoginDTO user)
+        public async Task<(bool, string)> Login(LoginDTO user)
         {
-            throw new NotImplementedException();
+            return await _loginService.LoginUser(user);
         }
     }
 }
