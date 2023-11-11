@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics.Eventing.Reader;
+using System.Text.Json.Nodes;
 using E_ventPlanner.Contexts;
 using E_ventPlanner.Models.DTOs;
 using Microsoft.AspNetCore.Identity;
 using System.Text.RegularExpressions;
 using E_ventPlanner.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace E_ventPlanner.Services;
 
@@ -16,27 +18,27 @@ public class LoginService : ILoginService
         _userManager = userManager;
     }
 
-    public async Task<(bool, string)> LoginUser(LoginDTO user)
+    public async Task<bool> LoginUser(LoginDTO user)
     {
         if (!IsValidEmail(user.Email))
         {
-            return (false, "Not valid e-mail format!");
+            return false;
         }
 
         var identityUser = await _userManager.FindByEmailAsync(user.Email);
 
         if (identityUser == null)
         {
-            return (false, "User with this e-mail was not found!");
+            return false;
         }
 
         var pwdResult = await _userManager.CheckPasswordAsync(identityUser, user.Password);
         if (!pwdResult)
         {
-            return (false, "The password was not correct!");
+            return false;
         }
 
-        return (true, identityUser.Id);
+        return true;
 
     }
 

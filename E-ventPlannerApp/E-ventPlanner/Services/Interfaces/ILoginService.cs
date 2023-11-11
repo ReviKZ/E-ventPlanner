@@ -4,5 +4,5 @@ namespace E_ventPlanner.Services.Interfaces;
 
 public interface ILoginService
 {
-    Task<(bool, string)> LoginUser(LoginDTO user);
+    Task<bool> LoginUser(LoginDTO user);
 }
