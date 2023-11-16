@@ -11,10 +11,10 @@ This project is for strenghthening knowledge in EF, use EF's optional SQL execut
   - Entity Framework
 ### Testing
   #### Automated
-    - NUnit
+  - NUnit
   #### Manual
-    - Swagger
-    - Postman
+  - Swagger
+  - Postman
 ### Planning
   - GitHub Projects Table planner
   - PlantUML
