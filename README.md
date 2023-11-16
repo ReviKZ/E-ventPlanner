@@ -10,7 +10,11 @@ This project is for strenghthening knowledge in EF, use EF's optional SQL execut
   - ASP.NET Core API
   - Entity Framework
 ### Testing
-  - NUnit
+  #### Automated
+    - NUnit
+  #### Manual
+    - Swagger
+    - Postman
 ### Planning
   - GitHub Projects Table planner
   - PlantUML
